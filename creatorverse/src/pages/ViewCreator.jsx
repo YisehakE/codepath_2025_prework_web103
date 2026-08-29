@@ -1,14 +1,43 @@
+import { useState, useEffect } from 'react'
+import { useParams } from 'react-router-dom'
 
 
-function ViewCreator({ creator }) {
+import { supabase } from '../client'
+import Card from '../components/Card'
 
+function ViewCreator() {
+    const { id } = useParams()
+    const [creator, setCreator] = useState({})
+
+    const getCreator = async () => {
+        const { data, error } = await supabase
+            .from('creators')
+            .select('*')
+            .eq('id', id)
+            .single()
+
+        if (error) {
+            console.error(error)
+            return
+        }
+        setCreator(data)
+    }
+
+    useEffect(() => {
+        console.log(`Creator ${id}`)
+        getCreator()
+    }, [])
+
+    if (!creator) { return <p>Loading...</p>}
 
     return (
-      <>
-
-      </>
+        <Card
+            name={creator.name}
+            url={creator.url}
+            description={creator.description}
+            imageURL={creator.imageURL}
+        />
     )
-  }
-  
-  export default ViewCreator
-  
+}
+
+export default ViewCreator

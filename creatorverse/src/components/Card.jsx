@@ -7,7 +7,12 @@ function Card({ name, url, description, imageURL }) {
                 <h3>{name}</h3>
             </header>
             <p>{description}</p>
-            <a href={url} target="_blank" rel="noreferrer">
+            <a
+                href={url}
+                target="_blank"
+                rel="noreferrer"
+                onClick={(e) => e.stopPropagation()}
+            >
                 Visit Channel
             </a>
         </article>

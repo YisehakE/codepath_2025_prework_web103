@@ -1,13 +1,22 @@
+import { useNavigate } from 'react-router-dom'
 import Card from './Card'
 
-function Creator({ name, url, description, imageURL }) {
+function Creator({ id, name, url, description, imageURL }) {
+  const navigate = useNavigate()
+
+  const goToCreator = () => {
+    navigate(`/creator/${id}`)
+  }
+
   return (
-    <Card
-      name={name}
-      url={url}
-      description={description}
-      imageURL={imageURL}
-    />
+    <div onClick={goToCreator} style={{ cursor: 'pointer' }}>
+      <Card
+        name={name}
+        url={url}
+        description={description}
+        imageURL={imageURL}
+      />
+    </div>
   )
 }
 
