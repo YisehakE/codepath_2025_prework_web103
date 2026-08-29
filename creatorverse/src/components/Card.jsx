@@ -1,4 +1,12 @@
-function Card({ name, url, description, imageURL }) {
+import { useNavigate } from 'react-router-dom'
+
+function Card({ id, name, url, description, imageURL }) {
+    const navigate = useNavigate()
+
+    const goToEdit = (e) => {
+        e.stopPropagation()
+        navigate(`/creator/${id}/edit`)
+    }
 
     return (
         <article>
@@ -15,6 +23,7 @@ function Card({ name, url, description, imageURL }) {
             >
                 Visit Channel
             </a>
+            <button onClick={goToEdit}>Edit</button>
         </article>
     )
 }

@@ -11,6 +11,7 @@ function Creator({ id, name, url, description, imageURL }) {
   return (
     <div onClick={goToCreator} style={{ cursor: 'pointer' }}>
       <Card
+        id={id}
         name={name}
         url={url}
         description={description}

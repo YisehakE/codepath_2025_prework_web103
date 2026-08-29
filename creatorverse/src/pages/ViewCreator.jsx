@@ -32,6 +32,7 @@ function ViewCreator() {
 
     return (
         <Card
+            id={id}
             name={creator.name}
             url={creator.url}
             description={creator.description}
