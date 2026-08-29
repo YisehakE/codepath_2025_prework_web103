@@ -28,6 +28,7 @@ function ShowCreators() {
                 creators.map((creator) => (
                     <Creator
                         key={creator.id}
+                        id={creator.id}
                         name={creator.name}
                         url={creator.url}
                         description={creator.description}
