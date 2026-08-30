@@ -1,15 +1,16 @@
-import { useState } from 'react'
-import { useNavigate } from 'react-router-dom'
+import { useNavigate, Routes, Route } from 'react-router-dom'
 
 import siteIcon1 from './assets/site-icon-1.jpeg'
 
 import './App.css'
 
 import ShowCreators from './pages/ShowCreators';
+import ViewCreator from './pages/ViewCreator';
+import EditCreator from './pages/EditCreator';
+import AddCreator from './pages/AddCreator';
 
 function App() {
   const navigate = useNavigate()
-  const [showCreators, setShowCreators] = useState();
 
   return (
     <>
@@ -21,13 +22,16 @@ function App() {
           <h1> Creatorverse </h1>
           <p> Your favorite <code> content creators</code> in one place! </p>
 
-          <button onClick={() => setShowCreators(true) }> View all creators </button>
-          <button onClick={() => setShowCreators(false) }> Hide creators </button>
           <button onClick={() => navigate('/add')}> Add Creator </button>
-
-          { showCreators && <ShowCreators /> }
         </div>
       </section>
+
+      <Routes>
+        <Route path="/" element={<ShowCreators />} />
+        <Route path="/creator/:id" element={<ViewCreator />} />
+        <Route path="/creator/:id/edit" element={<EditCreator />} />
+        <Route path="/add" element={<AddCreator />} />
+      </Routes>
     </>
   )
 }
