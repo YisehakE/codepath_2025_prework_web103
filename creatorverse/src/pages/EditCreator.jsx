@@ -90,7 +90,12 @@ function EditCreator() {
                     />
                 </label>
             </fieldset>
-            <button type="submit">Save Changes</button>
+            <div style={{ display: 'flex', justifyContent: 'flex-end', gap: '0.5rem' }}>
+                <button type="button" className="secondary" onClick={() => navigate(`/creator/${id}`)}>
+                    Cancel
+                </button>
+                <button type="submit">Save Changes</button>
+            </div>
         </form>
     )
 }

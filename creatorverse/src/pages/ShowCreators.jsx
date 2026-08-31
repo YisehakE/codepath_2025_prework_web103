@@ -25,16 +25,18 @@ function ShowCreators() {
             { creators.length === 0 ? (
                 <p>No content creators yet. Add one to get started!</p>
             ) : (
-                creators.map((creator) => (
-                    <Creator
-                        key={creator.id}
-                        id={creator.id}
-                        name={creator.name}
-                        url={creator.url}
-                        description={creator.description}
-                        imageURL={creator.imageURL}
-                    />
-                ))
+                <div style={{ display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: '1rem' }}>
+                    { creators.map((creator) => (
+                        <Creator
+                            key={creator.id}
+                            id={creator.id}
+                            name={creator.name}
+                            url={creator.url}
+                            description={creator.description}
+                            imageURL={creator.imageURL}
+                        />
+                    ))}
+                </div>
             )}
         </>
   )
