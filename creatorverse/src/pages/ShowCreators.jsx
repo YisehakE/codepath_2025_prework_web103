@@ -19,6 +19,10 @@ function ShowCreators() {
         getAllCreators()
     }, [])
 
+    const handleDeleted = (deletedId) => {
+        setCreators((prev) => prev.filter((c) => c.id !== deletedId))
+    }
+
     return (
         <>
             <h1> Your favorite content creators</h1>
@@ -34,6 +38,7 @@ function ShowCreators() {
                             url={creator.url}
                             description={creator.description}
                             imageURL={creator.imageURL}
+                            onDeleted={handleDeleted}
                         />
                     ))}
                 </div>

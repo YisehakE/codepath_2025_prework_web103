@@ -1,7 +1,7 @@
 import { useNavigate } from 'react-router-dom'
 import Card from './Card'
 
-function Creator({ id, name, url, description, imageURL }) {
+function Creator({ id, name, url, description, imageURL, onDeleted }) {
   const navigate = useNavigate()
 
   const goToCreator = () => {
@@ -16,6 +16,7 @@ function Creator({ id, name, url, description, imageURL }) {
         url={url}
         description={description}
         imageURL={imageURL}
+        onDeleted={onDeleted}
       />
     </div>
   )

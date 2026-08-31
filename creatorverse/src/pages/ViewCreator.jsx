@@ -39,6 +39,7 @@ function ViewCreator({ onBack }) {
                 url={creator.url}
                 description={creator.description}
                 imageURL={creator.imageURL}
+                onDeleted={onBack}
             />
         </>
     )

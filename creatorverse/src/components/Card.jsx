@@ -1,12 +1,29 @@
 import { useNavigate } from 'react-router-dom'
+import { supabase } from '../client'
 import './Card.css'
 
-function Card({ id, name, url, description, imageURL }) {
+function Card({ id, name, url, description, imageURL, onDeleted }) {
     const navigate = useNavigate()
 
     const goToEdit = (e) => {
         e.stopPropagation()
         navigate(`/creator/${id}/edit`)
+    }
+
+    const handleDelete = async (e) => {
+        e.stopPropagation()
+
+        const confirmed = window.confirm(`Delete ${name}? This can't be undone.`)
+        if (!confirmed) return
+
+        const { error } = await supabase.from('creators').delete().eq('id', id)
+
+        if (error) {
+            console.error(error)
+            return
+        }
+
+        onDeleted?.(id)
     }
 
     return (
@@ -41,7 +58,16 @@ function Card({ id, name, url, description, imageURL }) {
                 >
                     Visit Channel
                 </a>
-                <button onClick={goToEdit}>Edit</button>
+                <div style={{ display: 'flex', gap: '0.5rem' }}>
+                    <button onClick={goToEdit}>Edit</button>
+                    <button
+                        className="outline"
+                        onClick={handleDelete}
+                        style={{ '--pico-primary': 'var(--pico-del-color)', '--pico-primary-hover': 'var(--pico-del-color)' }}
+                    >
+                        Delete
+                    </button>
+                </div>
             </footer>
         </article>
     )
