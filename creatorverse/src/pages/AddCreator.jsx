@@ -66,7 +66,12 @@ function AddCreator() {
                     />
                 </label>
             </fieldset>
-            <button type="submit">Add Creator</button>
+            <div style={{ display: 'flex', justifyContent: 'flex-end', gap: '0.5rem' }}>
+                <button type="button" className="secondary" onClick={() => navigate('/')}>
+                    Cancel
+                </button>
+                <button type="submit">Add Creator</button>
+            </div>
         </form>
     )
 }

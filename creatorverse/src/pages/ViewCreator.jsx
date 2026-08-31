@@ -5,7 +5,7 @@ import { useParams } from 'react-router-dom'
 import { supabase } from '../client'
 import Card from '../components/Card'
 
-function ViewCreator() {
+function ViewCreator({ onBack }) {
     const { id } = useParams()
     const [creator, setCreator] = useState({})
 
@@ -31,13 +31,17 @@ function ViewCreator() {
     if (!creator) { return <p>Loading...</p>}
 
     return (
-        <Card
-            id={id}
-            name={creator.name}
-            url={creator.url}
-            description={creator.description}
-            imageURL={creator.imageURL}
-        />
+        <>
+            <button onClick={onBack}>Back</button>
+            <Card
+                id={id}
+                name={creator.name}
+                url={creator.url}
+                description={creator.description}
+                imageURL={creator.imageURL}
+                onDeleted={onBack}
+            />
+        </>
     )
 }
 

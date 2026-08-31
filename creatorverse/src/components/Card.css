@@ -1,0 +1,33 @@
+.creator-card {
+  position: relative;
+}
+
+.creator-card::before,
+.creator-card::after {
+  content: '';
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  pointer-events: none;
+  transition: width 0.3s ease, height 0.3s ease;
+}
+
+.creator-card::before {
+  top: 0;
+  left: 0;
+  border-top: 2px solid var(--pico-primary);
+  border-left: 2px solid var(--pico-primary);
+}
+
+.creator-card::after {
+  bottom: 0;
+  right: 0;
+  border-bottom: 2px solid var(--pico-primary);
+  border-right: 2px solid var(--pico-primary);
+}
+
+.creator-card:hover::before,
+.creator-card:hover::after {
+  width: 100%;
+  height: 100%;
+}

@@ -30,6 +30,22 @@
   }
 }
 
+/*
+ * Pico sets its color variables on `:root:not([data-theme=dark])` /
+ * `:root:not([data-theme])`, which is more specific than a plain `:root`
+ * selector, so a plain override loses the cascade. Matching that selector
+ * here keeps this app on a single teal brand color in both light and dark.
+ */
+:root:not([data-theme]) {
+  --pico-primary: #72c9d2;
+  --pico-primary-background: #72c9d2;
+  --pico-primary-underline: rgba(114, 201, 210, 0.5);
+  --pico-primary-hover: #5cb3bc;
+  --pico-primary-hover-background: #5cb3bc;
+  --pico-primary-focus: rgba(114, 201, 210, 0.5);
+  --pico-primary-inverse: #0b3d44;
+}
+
 @media (prefers-color-scheme: dark) {
   :root {
     --text: #9ca3af;
